@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<style>
+    .class2 {
+        width: 100%;
+        height: fit-content;
+        border: 5px pink solid;
+        
+    }
+    .class3 {
+        width: fit-content;
+        height: fit-content ;
+        margin-left: 350px;
+        text-align: center;
+    
+        
+        
+        
+    }
+    .class1 {
+        height: fit-content;
+        width: 100px;
+        border: 1px solid black;
+        float: left;
+        margin: center;
+        
+    }
+    .class4 {
+        height: fit-content;
+        width: 100%;
+        background-color: aquamarine;
+
+    }
+    #css1 {
+        height: 100vh;
+        width: 100%;
+        background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(pexels-ron-lach-10484498.jpg);
+        background-size: cover;
+        background-position: center;
+        padding-left: 8%;
+        padding-right: 8%;
+        box-sizing: border-box ;
+    }
+    #navbar{
+        height: 12%;
+        display: flex;
+        align-items: center;
+    }
+    .logo{
+        height: 170px;
+        width: 130px;
+        background-size: cover;
+        background-position: center;
+        margin-top: 70px;
+        cursor: pointer;
+    }
+nav{
+    flex: 1;
+    text-align: right;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 60px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 13;
+
+}
+button{
+    width: 180px;
+    color: #fff;
+    font-size: 12px;
+    padding: 12px 0;
+    background: #000;
+    border: 0;
+    border-radius: 20px;
+    outline: none;
+}
+.row{
+    display: flex;
+    height: 88%;
+    align-items: center;
+}
+.col{
+    flex-basis: 50%;
+    
+}
+h1{
+    color: #fff;
+    font-size: 60px;
+}
+.p1{
+    color: #fff;
+    font-size: 15px;
+}
+
+
+</style>
+<body>
+<div class="class2">
+    <div id="css1" > 
+        <div id="navbar">
+            <img src="logof.png" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="">HOME</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="">CALCULATOR</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>FIN FRIEND</h1>
+                <P class="p1">Reduce the tedious work of splitting bills amoong a group of people</P>
+            </div>
+        </div>
+    </div>
+    
+    <div class="class3">
+        <h3>ENTER THE NUMBER OF MEMBERS INVOLVED</h3>
+        <div class="class1">
+            <label >4 :</label>
+            <input type="radio" name="number" value="4" >
+        </div>
+        <div class="class1">
+            <label >5 :</label>
+            <input type="radio" name="number" value="5" >
+        </div>
+        <div class="class1">
+            <label>6 :</label>
+            <input type="radio" name="number" value="6" >
+        </div>
+        <div class="class1">    
+            <label>7 :</label>
+            <input type="radio" name="number" value="7" >
+        </div>
+        <div class="class1">
+            <label>8 :</label>
+            <input type="radio" name="number" value="8" >
+        </div>
+        <div class="class1">
+            <label>9 :</label>
+            <input type="radio" name="number" value="9" >
+        </div>
+        <div class="class1">
+            <label>10 :</label>
+            <input type="radio" name="number" value="10" >
+        </div>
+        <br>
+        <br>
+        <button onclick="fun1()">submit</button>
+        <p id="id2"></p>
+        <button id="id3" onclick="fun2()" hidden>submit</button>
+        <div class="class4" hidden>
+            <p id="id4"> <label for="id4"> Enter the person who paid the money  :  </label></p>
+            <label>Enter the amount paid</label>
+            <input type="number" id="id6">
+            <p id="id7"><label>check the persons who are involved</label></p>
+
+
+        <button onclick="fun3()">submit</button>
+        <button onclick="fun4()">end</button>
+        <p id="id8"></p>
+        </div>
+            
+    </div> 
+    
+</div>
+    
+</body>
+<script>
+    var arrp=[];
+    var arrm=[];
+    var arrt=[];
+    var arrpay=[];
+    var arrrec=[];
+var n;
+    function fun1(){
+        //alert("i am im");
+        n = document.querySelector('input[type = radio]:checked').value;
+        //alert(n);
+        var temp=document.getElementById('id2');
+        temp.innerHTML='';
+        for(i=0;i<parseInt(n);i++)
+        {
+            const temp2=document.createElement('p');
+            temp2.innerText="enter person "+(i+1)+" name : ";
+            const temp1=document.createElement('input');
+            temp1.type='text';
+            temp1.placeholder='person:'+(i+1);
+            temp1.id='iid'+i;
+            temp2.append(temp1);
+            temp.appendChild(temp2);
+        }
+        console.log(temp);
+        document.getElementById("id3").removeAttribute('hidden');
+    }
+    function fun2(){
+    for(i=0;i<parseInt(n);i++){
+        var tempp=document.getElementById("iid"+i).value;
+        arrp.push(tempp);
+        }
+        const temp=document.createElement('select')
+        temp.id="id5";
+    for(i=0;i<parseInt(n);i++){
+        const temp1=document.createElement('option');
+        temp1.id="iido"+i;
+        temp1.value=i;
+        temp1.innerText=arrp[i];
+        temp.appendChild(temp1);
+        console.log(temp);
+        arrm.push(0);
+        
+    }
+    document.getElementById('id4').appendChild(temp);
+    console.log(document.getElementById('id4'));
+    document.getElementsByClassName('class4')[0].removeAttribute('hidden');
+    const tem=document.getElementById('id7');
+    for(i=0;i<parseInt(n);i++){
+        const temp2=document.createElement('p');
+        const temp3=document.createElement('label')
+        temp3.innerText=arrp[i];
+        temp2.appendChild(temp3);
+        const temp1=document.createElement('input');
+        temp1.type="checkbox";
+        temp1.id="iidc"+i;
+        temp1.labels=arrp[i];
+        temp2.appendChild(temp1);
+        tem.appendChild(temp2);     
+        console.log(document.getElementById('id7'));
+    }
+}
+function fun3(){
+    
+    var x=parseInt(document.getElementById('id5').value);
+    var amt=parseInt(document.getElementById('id6').value);
+    arrm[x]=arrm[x]+amt;
+    var par=0;
+    for(i=0;i<parseInt(n);i++){
+        if(document.getElementById('iidc'+i).checked){
+            par++;
+        }
+    }
+    amt=amt/par;
+    for(i=0;i<parseInt(n);i++){
+        if(document.getElementById('iidc'+i).checked){
+            arrm[i]=arrm[i]-amt;
+        }
+    }
+    alert(arrm);
+}
+function fun4(){                                              
+    for(i=0;i<parseInt(n);i++){
+        if(arrm[i]<0){
+            arrpay.push(arrm[i]);
+            var node=document.createElement('h4');
+            var testnode=document.createTextNode(arrp[i]+'  should pay  : '+(-1*arrm[i]));
+            node.appendChild(testnode);
+            document.getElementById('id8').appendChild(node);
+        }
+        else{
+            arrrec.push(arrm[i]);
+            var node=document.createElement('h4');
+            var testnode=document.createTextNode(arrp[i]+'  should recieve  : '+arrm[i]);
+            node.appendChild(testnode);
+            document.getElementById('id8').appendChild(node);
+        }
+    }}
+</script>
+</html>
